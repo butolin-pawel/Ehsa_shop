@@ -1,0 +1,144 @@
+<div class="mt-4">
+  <div class="p-4 border border-black rounded-lg">
+    <h1 class="text-3xl font-bold text-black mb-4">Фильтр</h1>
+
+    <div class="flex">
+      <div class="mr-12">
+        <h2 class="font-bold text-xl">Цена</h2>
+        <select
+          name=""
+          id=""
+          class="border-2 my-1 border-primary rounded-lg p-2 w-52 text-center mb-2 focus:shadow-md focus:shadow-primary"
+        >
+          <option value="">По возрастанию</option>
+          <option value="">По убыванию</option>
+        </select>
+
+        <div class="flex">
+          <p class="font-bold mr-1 ">От</p>
+          <input
+            type="number"
+            name=""
+            id=""
+            min="0"
+            value="0"
+            class="mx-1 border-2 border-primary rounded-lg w-16 p-1 focus:shadow-md focus:shadow-primary"
+          />
+          <p class="font-bold mr-1">До</p>
+          <input
+            type="number"
+            name=""
+            id=""
+            value="999999"
+            class="mx-1 border-2 border-primary rounded-lg w-20 p-1 focus:shadow-md focus:shadow-primary"
+          />
+        </div>
+
+        <h2 class="font-bold text-xl mt-2">Рейтинг</h2>
+        <select
+          name=""
+          id=""
+          class="border-2 my-1 border-primary rounded-lg p-2 w-52 text-center focus:shadow-md focus:shadow-primary"
+        >
+          <option value="">По возрастанию</option>
+          <option value="">По убыванию</option>
+        </select>
+      </div>
+      <div class="mr-12">
+        <h2 class="font-bold text-xl">Параметр</h2>
+        <select
+          name=""
+          id=""
+          class="border-2 my-1 border-primary rounded-lg p-2 w-52 text-center focus:shadow-md focus:shadow-primary"
+        >
+          <option value="">Опция</option>
+          <option value="">Опция</option>
+          <option value="">Опция</option>
+          <option value="">Опция</option>
+        </select>
+
+        <h2 class="font-bold text-xl">Параметр</h2>
+        <select
+          name=""
+          id=""
+          class="border-2 my-1 border-primary rounded-lg p-2 w-52 text-center focus:shadow-md focus:shadow-primary"
+        >
+          <option value="">Опция</option>
+          <option value="">Опция</option>
+          <option value="">Опция</option>
+          <option value="">Опция</option>
+        </select>
+
+        <h2 class="font-bold text-xl">Параметр</h2>
+        <select
+          name=""
+          id=""
+          class="border-2 my-1 border-primary rounded-lg p-2 w-52 text-center focus:shadow-md focus:shadow-primary"
+        >
+          <option value="">Опция</option>
+          <option value="">Опция</option>
+          <option value="">Опция</option>
+          <option value="">Опция</option>
+        </select>
+      </div>
+      <div>
+        <h2 class="font-bold text-xl">Поиск по названию</h2>
+        <input
+          type="text"
+          name=""
+          id=""
+          placeholder="Введите название"
+          class="border-2 my-1 border-primary rounded-lg p-2 w-64 text-left focus:shadow-md focus:shadow-primary"
+        />
+      </div>
+      <div class="ml-auto mt-auto p-4 flex">
+        <button
+          class="bg-primary border-2 border-amber-300 font-bold rounded-lg hover:bg-amber-500 hover:shadow-lg hover:shadow-primary w-36 h-12 mr-4"
+        >
+          Применить
+        </button>
+        <button
+          class="border-2 border-amber-300 font-bold rounded-lg hover:shadow-lg hover:bg-amber-100 hover:shadow-primary w-36 h-12"
+        >
+          Сбросить
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap mt-4 place-content-center">
+    <div
+      class="border-2 border-black rounded-lg p-2 flex m-2"
+      *ngFor="let num of list"
+    >
+      <a href="catalog/{{category}}/4">
+        <img
+          src="assets/ysor.png"
+          alt="Фото товара"
+          class="rounded-lg p-2 w-[252px] h-[252px] mr-4 hover:scale-105 hover:shadow-md hover:shadow-primary"
+        />
+      </a>
+      <div class="flex-col flex">
+        <a href="catalog/{{category}}/4">
+          <h1
+            class="text-xl font-bold mb-2 hover:underline hover:drop-shadow-lg"
+          >
+            Название
+          </h1>
+        </a>
+        <p>Характеристика</p>
+        <p>Характеристика</p>
+        <p>Характеристика</p>
+        <p>Характеристика</p>
+        <h1 class="text-xl font-bold text-right mt-auto mb-2">
+          Цена: {{ num }}р.
+        </h1>
+        <button
+          class="bg-primary border-2 border-amber-300 font-bold rounded-lg hover:bg-amber-500 hover:shadow-lg hover:shadow-primary w-full h-12 mr-4"
+        >
+          Добавить в корзину <fa-icon [icon]="cart"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

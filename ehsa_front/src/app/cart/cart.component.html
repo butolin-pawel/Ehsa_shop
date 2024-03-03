@@ -1,0 +1,37 @@
+<button (click)="change()">ПЕРЕКЛЮЧИТЬ ВИД ДЛЯ ТЕСТА</button>
+<div *ngIf="count ; else emptyCart" class="flex flex-col">
+  <h1 class="text-center text-2xl font-bold mb-4">Корзина товаров</h1>
+  <table>
+    <thead>
+      <tr>
+        <th class="w-1/4 px-4 py-2 bg-primary border border-black">Название</th>
+        <th class="w-1/4 px-4 py-2 bg-primary border border-black">Характеристика</th>
+        <th class="w-1/4 px-4 py-2 bg-primary border border-black">Количество(шт.)</th>
+        <th class="w-1/4 px-4 py-2 bg-primary border border-black">Итоговая стоимость</th>
+        <th class="w-5"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tv of list">
+        <th class="border px-4 py-2"></th>
+        <th class="border px-4 py-2"></th>
+        <th class="border px-4 py-2"><input type="number" min="0"  value="1"  class=" h-8 border-2 border-primary rounded-lg w-16 p-1 focus:shadow-md focus:shadow-primary"></th>
+        <th class="border px-4 py-2"></th>
+        <th><button ><fa-icon [icon]="faTrash"></fa-icon></button></th>
+      </tr>
+    </tbody>
+  </table>
+  <div class="ml-auto justify-end mt-4">
+    <p class="mr-2">Итоговая стоимость: *****руб.</p>
+    <button class="bg-primary border-2 border-amber-300 font-bold rounded-lg hover:bg-amber-500 hover:shadow-lg hover:shadow-primary w-56  h-12 mr-4">Перейти к оформлению
+    </button>
+
+  </div>
+
+</div>
+<ng-template #emptyCart>
+<div class="flex flex-col w-3/5 justify-center m-auto rounded-lg border-black  mt-6 p-12 border-2">
+  <h1 class="text-2xl text-center mb-3 font-bold">Корзина пуста</h1>
+  <a class="bg-primary border-2 text-center p-2 border-amber-300 font-bold rounded-lg hover:bg-amber-500 hover:shadow-lg hover:shadow-primary w-2/5 m-auto h-12 " href="/">Перейти в каталог</a>
+</div>
+</ng-template>
