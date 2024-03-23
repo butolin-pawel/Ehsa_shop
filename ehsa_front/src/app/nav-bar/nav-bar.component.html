@@ -1,28 +1,104 @@
 <div
-  class="bg-primary rounded-b-xl h-20 flex justify-between items-center text-xl font-bold shadow-xl p-2 border-b-2 border-black"
+  class="bg-primary rounded-b-xl h-20 flex sm:justify-between items-center text-xl font-bold shadow-xl p-2 border-b-2 border-black"
 >
-  <a href="" class="h-full">
-    <img src="" alt="logotip" class="w-40  h-full border mr-36" />
+  <button (click)="sideMenu()" #toggleButton><fa-icon  [icon]="barIcon"  class="lg:hidden px-4 text-4xl"></fa-icon></button>
+  <a href="" class="h-full ">
+    <img src="" alt="logotip" class=" sm:w-40 h-full border lg:mr-36" />
   </a>
-  <div class="mr-16">
+  <div (mouseenter)="showCategoryList('')" (mouseleave)="hideCategoryList()" class="mr-16 relative hidden lg:block" >
     <a class="hover:drop-shadow-lg hover:text-gray-600" href="">Каталог</a>
+    <div (mouseenter)="showCategoryList('')" (mouseleave)="hideCategoryList()" *ngIf="showList" class="fixed pt-7 text-center p-2 bg-opacity-35 rounded-lg z-50">
+      <div (mouseenter)="showCategoryList('nas')" (mouseleave)="hideSubCategoryList()"  class="bg-white border-2 p-2  border-primary  hover:bg-yellow-200">
+        <a href="catalog/category1">Насосы <fa-icon [icon]="arrIcon"></fa-icon></a>
+            <div *ngIf="subCat === 'nas'"  class="absolute text-nowrap -mt-10 ml-[248px]">
+                              <div class="bg-white border-2 p-2  border-primary  hover:bg-yellow-200">
+                                <a href="catalog/category1">Шестерные </a>
+                              </div>
+                              <div class="bg-white border-2 p-2  border-primary  hover:bg-yellow-200">
+                                <a href="catalog/category1">Аксиально-поршневые </a>
+                              </div>
+            </div>
+      </div>
+      <div class="bg-white border-2 p-2 border-primary  hover:bg-yellow-200">
+        <a href="catalog/category2">Моторы </a>
+      </div>
+      <div (mouseenter)="showCategoryList('gidras')" (mouseleave)="hideSubCategoryList()" class="bg-white border-2 p-2 border-primary  hover:bg-yellow-200">
+        <a href="catalog/category3">Гидрораспределители <fa-icon [icon]="arrIcon"></fa-icon></a>
+        <div *ngIf="subCat === 'gidras'"  class="absolute -mt-10 ml-[248px]">
+          <div class="bg-white border-2 p-2  border-primary  hover:bg-yellow-200">
+            <a href="catalog/category4">Ручные </a>
+          </div>
+          <div class="bg-white border-2 p-2  border-primary  hover:bg-yellow-200">
+            <a href="catalog/category4">Электроуправляемые </a>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white border-2 p-2 border-primary  hover:bg-yellow-200">
+        <a href="catalog/category4">Клапанная аппаратура </a>
+      </div>
+      <div (mouseenter)="showCategoryList('uplot')" (mouseleave)="hideSubCategoryList()" class="bg-white border-2 p-2 border-primary hover:bg-yellow-200">
+        <a href="catalog/category5">Уплотнения <fa-icon [icon]="arrIcon"></fa-icon></a>
+        <div *ngIf="subCat === 'uplot'"  class="absolute text-nowrap -mt-10 ml-[248px]">
+          <div class="bg-white border-2 p-2  border-primary  hover:bg-yellow-200">
+            <a href="catalog/category5">Штоковые </a>
+          </div>
+          <div class="bg-white border-2 p-2  border-primary  hover:bg-yellow-200">
+            <a href="catalog/category5">Поршневые </a>
+          </div>
+          <div class="bg-white border-2 p-2  border-primary  hover:bg-yellow-200">
+            <a href="catalog/category5">Кольцо круглого сечения </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
+  <div class="hidden lg:block">
     <a class="hover:drop-shadow-lg hover:text-gray-600" href="about">О нас</a>
   </div>
 
-  <a href="tel:+79999999999" class="ml-auto mr-20 hover:underline"
+  <a href="tel:+79999999999" class="hidden sm:block ml-auto mx-auto lg:mr-20 hover:underline"
     >8-999-999-99-99</a
   >
-  <div class="text-5xl hover:scale-105 relative">
+  <div class="text-5xl hover:scale-105 ml-auto sm:ml-0 relative">
     <a href="cart">
       <fa-icon [icon]="cartIcon"></fa-icon>
     </a>
     <p *ngIf="countItemInCart !=0" class="absolute -bottom-2 -right-3 text-xl bg-white  border-black px-1 rounded-full">{{countItemInCart}}</p>
   </div>
-  <div class="ml-12 text-5xl mr-10 hover:scale-105">
+  <div class="ml-12 text-5xl  mr-5 lg:mr-10 hover:scale-105">
     <a href="login">
       <fa-icon [icon]="userIcon"></fa-icon>
     </a>
   </div>
+  <div *ngIf="showSideMenu"  class="z-10 absolute top-0 left-0 h-screen w-screen">
+    <div (click)="sideMenu()" class="absolute h-screen w-1/4 top-0 left-2/3">
+
+    </div>
+  <div   class="z-0 absolute flex flex-col h-screen w-3/4 top-0 left-0 bg-primary border-2 border-black rounded-r-lg bg-opacity-95 px-2">
+      <div class="flex h-20 items-center">
+        <fa-icon (click)="sideMenu()" [icon]="closeIcon" class="text-4xl px-4"></fa-icon>
+        <img src="" alt="logotip" class="py-2 w-40 h-4/5 border lg:mr-36" />
+      </div>
+      <a class="text-2xl " href="">Каталог</a>
+      <a class="text-xl ml-2 mt-2" href="catalog/category1">Насосы </a>
+        <a class="text-xl ml-4 font-medium" href="catalog/category1">Шестерные</a>
+        <a class="text-xl ml-4 font-medium" href="catalog/category1">Аксиально-поршневые</a>
+      <a class="text-xl ml-2 mt-2" href="catalog/category2">Моторы</a>
+      <a class="text-xl ml-2 mt-2" href="catalog/category3">Гидрораспределители</a>
+        <a class="text-xl ml-4 font-medium" href="catalog/category3">Ручные</a>
+        <a class="text-xl ml-4 font-medium" href="catalog/category3">Электроуправляемые</a>
+      <a class="text-xl ml-2 mt-2" href="catalog/category4">Клапанная аппаратура</a>
+      <a class="text-xl ml-2 mt-2" href="catalog/category5">Уплотнения</a>
+        <a class="text-xl ml-4 font-medium" href="catalog/category5">Штоковые</a>
+        <a class="text-xl ml-4 font-medium" href="catalog/category5">Поршневые</a>
+        <a class="text-xl ml-4 font-medium" href="catalog/category5">Кольцо круглого сечения</a>
+      <a class="text-2xl mt-2" href="about">О нас</a>
+      <div class="mt-auto p-2 flex flex-col">
+        <p class="text-2xl -ml-2">Контакты</p>
+        <a href="tel:+79999999999" class=""
+    ><fa-icon [icon]="phoneIcon"></fa-icon> 8-999-999-99-99</a>
+        <a href="mailto:example&#64;gmail.com"><fa-icon [icon]="mailIcon"></fa-icon> example&#64;gmail.com</a>
+      </div>
+  </div>
+</div>
 </div>

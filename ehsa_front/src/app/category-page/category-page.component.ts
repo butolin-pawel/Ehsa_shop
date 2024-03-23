@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus,faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { GoodInfoComponent } from '../good-info/good-info.component';
 import { ActivatedRoute } from '@angular/router';
 @Component({
@@ -16,6 +16,12 @@ export class CategoryPageComponent {
       this.category = this.route.snapshot.params['category'];
   }
   category : string;
+
+  arrIcon = faArrowRight;
   cart = faCartPlus;
-  list : number[] = [1,2,3,4,5,6,7,8,9,0]
+  fltr : boolean = false;
+  list : number[] = [1,2,3,4,5,6,7,8,9,0];
+  openFiltr(){
+    this.fltr = !this.fltr;
+  }
 }
